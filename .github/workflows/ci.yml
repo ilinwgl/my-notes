@@ -1,0 +1,35 @@
+name: Deploy MkDocs
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - run: pip install -r requirements.txt
+
+      - run: mkdocs build
+
+      - name: Deploy to GitHub Pages repo
+        run: |
+          cd site
+          git init
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add .
+          git commit -m "deploy"
+          git branch -M main
+          git push --force https://github.com/ilinwgl/ilinwgl.github.io.git main
