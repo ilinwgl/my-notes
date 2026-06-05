@@ -1,35 +1,53 @@
-name: Deploy MkDocs
+name: Deploy MkDocs to GitHub Pages
 
 on:
   push:
     branches:
-      - main
-
-permissions:
-  contents: write
+      - main 
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
+      - name: Checkout source
+        uses: actions/checkout@v4
         with:
-          python-version: "3.x"
+          fetch-depth: 0 
 
-      - run: pip install -r requirements.txt
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
 
-      - run: mkdocs build
-
-      - name: Deploy to GitHub Pages repo
+      - name: Install MkDocs
         run: |
-          cd site
-          git init
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add .
-          git commit -m "deploy"
-          git branch -M main
-          git push --force https://github.com/ilinwgl/ilinwgl.github.io.git main
+          pip install -r requirements.txt
+
+      - name: Build MkDocs site
+        run: mkdocs build --strict
+
+      - name: Setup SSH
+        env:
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$DEPLOY_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+      - name: Deploy to ilinwgl.github.io
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          git clone git@github.com:ilinwgl/ilinwgl.github.io.git gh-pages-repo
+          
+          rm -rf gh-pages-repo/*
+          
+          cp -r site/* gh-pages-repo/
+          
+          cd gh-pages-repo
+          git add -A
+          git diff --cached --quiet || git commit -m "Deploy from my-notes @ ${{ github.sha }}"
+          git push
