@@ -2,8 +2,6 @@
 
 Notes and references related to computer vision topics.
 
-## Topics
+## Notes
 
-- Image Processing
-- Object Detection
-- OpenCV
+- [Filter](vision/filter.md)
