@@ -206,6 +206,7 @@ $$
     </tr>
 </table>
 
+- Laplacian sharpening
 - 利用上下左右四个方向 → 相当于 原图 + Laplacian
 - 边缘增强较温和
 - 不容易放大噪声
