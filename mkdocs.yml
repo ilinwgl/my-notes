@@ -11,13 +11,15 @@ theme:
   name: material
 
 plugins:
+  - search
   - i18n:
-    default_language: en
-    languages:
-      zh:
-        name: 简体中文
-      en:
-        name: English
+      docs_structure: suffix
+      languages:
+        - locale: zh
+          name: 简体中文
+        - locale: en
+          default: true
+          name: English
 
 nav:
   - Home: index.md
