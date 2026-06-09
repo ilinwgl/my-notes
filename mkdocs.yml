@@ -1,11 +1,12 @@
 site_name: Develop Notes
 
 theme: 
-  name: dracula
+  name: cyborg
 
 nav:
   - Home: index.md
   - Computer Vision:
     - Overview: vision/index.md
+    - Filter: vision/filter.md
   - .NET Development:
     - Overview: dotnet/index.md
