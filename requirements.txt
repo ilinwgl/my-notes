@@ -1,5 +1,4 @@
 mkdocs
 mkdocs-material
-mkdocs-material[recommended]
 pymdown-extensions
 mkdocs-static-i18n

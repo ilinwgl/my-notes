@@ -13,13 +13,13 @@ theme:
 plugins:
   - search
   - i18n:
-      docs_structure: suffix
       languages:
         - locale: en
-          default: true
           name: English
+          default: true
         - locale: zh
           name: 简体中文
+          build: true
 
 nav:
   - Home: index.md
