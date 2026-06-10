@@ -241,36 +241,37 @@ In computer vision, edges are commonly computed using convolution-based differen
 > <span style="color:#d62728; font-weight:bold;">$DoG = G(\sigma_1) − G(\sigma_2), where \sigma_2 > \sigma_1$</span>
 
 - Gaussian acts as a blur operator:
-  - small $\sigma$ → slight blurring
-  - large $\sigma$ → strong blurring
-  - Subtracting a strongly blurred image from a slightly blurred image results in nearly zero difference in flat regions, while producing large differences and strong responses around edges, thereby enabling the extraction of edge information.
+    - small $\sigma$ → slight blurring
+    - large $\sigma$ → strong blurring
+    - Subtracting a strongly blurred image from a slightly blurred image results in nearly zero difference in flat regions, while producing large differences and strong responses around edges, thereby enabling the extraction of edge information.
+
 - Characteristics:
-  - Computationally efficient
-  - Multi-scale representation
-  - Foundation of SIFT feature detection
+    - Computationally efficient
+    - Multi-scale representation
+    - Foundation of SIFT feature detection
 
 ## Practical Methods
 
 ### Canny
 
 - Detection pipeline
-  1. **Gaussian Smoothing**
-      - Apply Gaussian filtering to the image to suppress noise and reduce errors in subsequent gradient computation.
+    1. **Gaussian Smoothing**
+        - Apply Gaussian filtering to the image to suppress noise and reduce errors in subsequent gradient computation.
 
-  2. **Gradient Computation**
-       - Compute the gradient magnitude and direction using derivative operators (e.g., Sobel operators or Gaussian derivative filters).
+    2. **Gradient Computation**
+        - Compute the gradient magnitude and direction using derivative operators (e.g., Sobel operators or Gaussian derivative filters).
 
-  3. **Non-Maximum Suppression (NMS)**
+    3. **Non-Maximum Suppression (NMS)**
         - Perform local maximum detection along the gradient direction and retain only potential edge pixels, producing thin edges.
 
-  4. **Double Thresholding**
-     - According to the high and low thresholds, pixels are classified into:
-       - strong edges
-       - weak edges
-       - non-edges (suppressed)
+    4. **Double Thresholding**
+        - According to the high and low thresholds, pixels are classified into:
+            - strong edges
+            - weak edges
+            - non-edges (suppressed)
 
-  5. **Hysteresis**
-     - Preserve weak edges connected to strong edges and remove isolated noise points.
+    5. **Hysteresis**
+        - Preserve weak edges connected to strong edges and remove isolated noise points.
 
 #### **Non-Maximum Suppression**
 
