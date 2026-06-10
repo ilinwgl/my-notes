@@ -37,7 +37,8 @@
 
 ## 一阶求导（Gradient-based）
 
-<span style="font-weight:bold;">核心思想：</span><span style="color:#d62728; font-weight:bold;">一阶导数 = 梯度</span> → <span style="color:#1f77b4; font-weight:bold;">边缘 = 梯度幅值大的位置</span>
+**核心思想：**
+> <span style="color:#d62728; font-weight:bold;">一阶导数 = 梯度</span> → <span style="color:#1f77b4; font-weight:bold;">边缘 = 梯度幅值大的位置</span>
 
 ### Prewitt
 
@@ -196,8 +197,8 @@
 - 是Canny的梯度计算基础
 
 ## 二阶求导（Second derivative）
-
-<span style="font-weight:bold;">核心思想：</span><span style="color:#d62728; font-weight:bold;">边缘 = 二阶导数的零交叉点（zero-crossing）</span>
+**核心思想：**
+> <span style="color:#d62728; font-weight:bold;">边缘 = 二阶导数的零交叉点（zero-crossing）</span>
 
 ### Laplacian
 
@@ -228,7 +229,10 @@
 
 ### DoG
 
-- 近似LoG，用两个模糊版本相减 → $DoG = G(σ1) - G(σ2)$ 通常 $\sigma2 > \sigma1$
+**核心思想：**
+> **类似于LoG，对图片使用两种高斯模糊：**
+> <span style="color:#d62728; font-weight:bold;">$DoG = G(\sigma_1) − G(\sigma_2), where \sigma_2 > \sigma_1$</span>
+
 - Gaussian是模糊器：
   - 小 $\sigma$ → 轻微模糊
   - 大 $\sigma$ → 强烈模糊
@@ -273,8 +277,7 @@
 👉 本质是利用**边缘的空间连续性（connectivity）**，在保留真实边缘的同时抑制噪声。
 
 #### 总结
-
-<span style="color:#d62728; font-weight:bold;">Canny = Gaussian smoothing → Gradient → NMS → Double threshold → Hysteresis</span>
+> <span style="color:#d62728; font-weight:bold;">Canny = Gaussian smoothing → Gradient → NMS → Double threshold → Hysteresis</span>
 
 - 高检测率（good detection）
 - 精确定位（good localization）
@@ -284,10 +287,13 @@
 
 ### 形态学（Morphology）
 
-- 基于形态学操作 → $Edge = Dilate(I) - Erode(I)$
-  - Dilate让亮的区域变大，物体变粗
-  - Erode让亮的区域变小，物体变细
-  - Dilate - Erode ⇒ 边界被扩张和收缩之间的差异 → 轮廓区域
+**核心思想:**
+> **基于形态学操作：**
+> <span style="color:#d62728; font-weight:bold;"> $Edge = Dilate(I) - Erode(I)$ </span>
+
+- Dilate让亮的区域变大，物体变粗
+- Erode让亮的区域变小，物体变细
+- Dilate - Erode ⇒ 边界被扩张和收缩之间的差异 → 轮廓区域
 - 特点：
   - 简单
   - 适合 binary / 工业图像
@@ -295,7 +301,9 @@
 
 ### Phase Congruency
 
-- 边缘 = 多尺度傅里叶中“相位一致”的位置 
+**核心思想:**
+> <span style="color:#d62728; font-weight:bold;">边缘 = 多尺度傅里叶中“相位一致”的位置 </span>
+
 - 图像可以分解为：
   - 不同频率（frequency）
   - 不同相位（phase）

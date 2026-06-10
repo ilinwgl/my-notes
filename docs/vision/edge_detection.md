@@ -239,6 +239,7 @@ In computer vision, edges are commonly computed using convolution-based differen
 **Core Idea:**
 > **Approximates LoG using two Gaussian blurred images:**
 > <span style="color:#d62728; font-weight:bold;">$DoG = G(\sigma_1) − G(\sigma_2), where \sigma_2 > \sigma_1$</span>
+
 - Gaussian acts as a blur operator:
   - small $\sigma$ → slight blurring
   - large $\sigma$ → strong blurring
@@ -288,6 +289,7 @@ In computer vision, edges are commonly computed using convolution-based differen
 
 #### Summary
 > <span style="color:#d62728; font-weight:bold;">Canny = Gaussian smoothing → Gradient → NMS → Double threshold → Hysteresis</span>
+
 - good detection
 - good localization
 - single response
@@ -300,9 +302,9 @@ In computer vision, edges are commonly computed using convolution-based differen
 > **Based on morphological operations:**
 > <span style="color:#d62728; font-weight:bold;"> $Edge = Dilate(I) - Erode(I)$ </span>
 
-  - Dilation enlarges bright regions and makes objects thicker.
-  - Erosion shrinks bright regions and makes objects thinner.
-  - Dilate − Erode ⇒ the difference between expansion and contraction highlights the boundary regions.
+- Dilation enlarges bright regions and makes objects thicker.
+- Erosion shrinks bright regions and makes objects thinner.
+- Dilate − Erode ⇒ the difference between expansion and contraction highlights the boundary regions.
 
 - Characteristics:
   - simple
