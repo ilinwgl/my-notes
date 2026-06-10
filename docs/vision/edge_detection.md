@@ -328,4 +328,4 @@ In computer vision, edges are commonly computed using convolution-based differen
     - highly robust to illumination changes
     - close to human perception
 
-![Edge_Detection](/docs/images/edge_detection_demo.png)
+![Edge_Detection](../images/edge_detection_demo.png)

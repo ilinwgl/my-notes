@@ -317,4 +317,4 @@
     - 对光照极鲁棒
     - 接近人类感知
 
-![Edge_Detection](/docs/images/edge_detection_demo.png)
+![Edge_Detection](../images/edge_detection_demo.png)
