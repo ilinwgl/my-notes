@@ -26,5 +26,6 @@ nav:
   - Computer Vision:
     - Overview: vision/index.md
     - Filter: vision/filter.md
+    - Edge Detection: vision/edge_detection.md
   - .NET Development:
     - Overview: dotnet/index.md

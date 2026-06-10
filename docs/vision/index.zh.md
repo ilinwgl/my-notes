@@ -5,3 +5,4 @@
 ## Notes
 
 - [滤波器](filter.md)
+- [边缘检测](edge_detection.md)
