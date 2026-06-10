@@ -290,21 +290,21 @@ Normalizing the Gaussian kernel prevents the image intensity from being attenuat
 
 Effect of Standard Deviation
 - Smaller $\sigma$
-  - Larger center weight
-  - Weaker smoothing
-  - Less blur
+    - Larger center weight
+    - Weaker smoothing
+    - Less blur
 - Larger $\sigma$
-  - More evenly distributed weights
-  - Stronger smoothing
-  - More blur
+    - More evenly distributed weights
+    - Stronger smoothing
+    - More blur
 
 Effect of Window Size
 - Larger window size
-  - More elements in normalization
-  - Stronger smoothing
+    - More elements in normalization
+    - Stronger smoothing
 - Smaller window size
-  - Fewer elements in normalization
-  - Weaker smoothing
+    - Fewer elements in normalization
+    - Weaker smoothing
 
 Rule of Thumb:
 
@@ -326,22 +326,22 @@ An `n x n` 2D convolution with complexity (`O(n^2)`) can be decomposed into: a h
 ## Image Noise
 
 - Salt-and-Pepper Noise (Impulse Noise)
-  - Random black and white pixels.
-  - Removed effectively by the Median Filter.
+    - Random black and white pixels.
+    - Removed effectively by the Median Filter.
 - Gaussian Noise
-  - Random noise following a Gaussian distribution.
-  - Commonly reduced using the Gaussian Filter.
+    - Random noise following a Gaussian distribution.
+    - Commonly reduced using the Gaussian Filter.
 - Uniform Noise
-  - Noise values are uniformly distributed.
-  - Can be reduced by:
-    - Mean Filter
-    - Gaussian Filter
+    - Noise values are uniformly distributed.
+    - Can be reduced by:
+        - Mean Filter
+        - Gaussian Filter
 - Poisson Noise
-  - Signal-dependent noise.
-  - Brighter regions contain stronger noise, while darker regions contain weaker noise.
-  - Common methods:
-    - Gaussian Filter
-    - Non-Local Means (NLM)
+    - Signal-dependent noise.
+    - Brighter regions contain stronger noise, while darker regions contain weaker noise.
+    - Common methods:
+        - Gaussian Filter
+        - Non-Local Means (NLM)
 
 ---
 **Non-Local Means Filter**

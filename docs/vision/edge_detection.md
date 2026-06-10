@@ -86,9 +86,9 @@ In computer vision, edges are commonly computed using convolution-based differen
 - 3×3 fixed convolution kernels
 - Uses uniform weights to approximate derivatives
 - Characteristics:
-  - Simple and efficient
-  - Sensitive to noise
-  - Moderate accuracy
+    - Simple and efficient
+    - Sensitive to noise
+    - Moderate accuracy
 
 ### Sobel
 <div style="display:flex; gap:20px;">
@@ -130,10 +130,10 @@ In computer vision, edges are commonly computed using convolution-based differen
 
 - Improvement over Prewitt by introducing center weighting
 - Characteristics:
-  - Higher weight on central pixels
-  - Better noise robustness
-  - Separable filter (efficient implementation) -> Can be interpreted as:
-    - smoothing kernel + differentiation kernel $[-1, 2, -1]^T · [-1, 0, +1]$
+    - Higher weight on central pixels
+    - Better noise robustness
+    - Separable filter (efficient implementation) -> Can be interpreted as:
+        - smoothing kernel + differentiation kernel $[-1, 2, -1]^T · [-1, 0, +1]$
 
 ### Scharr
 
@@ -157,9 +157,9 @@ In computer vision, edges are commonly computed using convolution-based differen
 
 - Improved version of Sobel
 - Characteristics:
-  - Better rotational symmetry
-  - More accurate directional estimation
-  - Improved stability over Sobel
+    - Better rotational symmetry
+    - More accurate directional estimation
+    - Improved stability over Sobel
 
 ### Roberts
 
@@ -188,21 +188,21 @@ In computer vision, edges are commonly computed using convolution-based differen
 
 - Computes diagonal differences (45° directions)
 - Characteristics:
-  - Highly sensitive
-  - Very noise-sensitive
-  - Suitable for fast, coarse edge detection
+    - Highly sensitive
+    - Very noise-sensitive
+    - Suitable for fast, coarse edge detection
 
 ### Gaussian Derivative Filters
 
 - When images contain noise:
-  1. Apply Gaussian smoothing (denoising)
-  2. Compute derivatives
+    1. Apply Gaussian smoothing (denoising)
+    2. Compute derivatives
 - Since both operations are convolutions, they can be combined into:
-  - Derivative of Gaussian (DoG kernel in continuous form)
+    - Derivative of Gaussian (DoG kernel in continuous form)
 - a first-order derivative filter that already incorporates smoothing
 - Characteristics:
-  - Combines smoothing and differentiation
-  - Fundamental component of the Canny detector
+    - Combines smoothing and differentiation
+    - Fundamental component of the Canny detector
 
 ## Second-Order Derivative Methods (Second derivative)
 
@@ -214,24 +214,24 @@ In computer vision, edges are commonly computed using convolution-based differen
 - Direct computation of second-order derivatives
 - Isotropic (direction-independent)
 - Characteristics:
-  - Highly sensitive to noise
-  - Amplifies high-frequency components
+    - Highly sensitive to noise
+    - Amplifies high-frequency components
 
 **Second derivative = enhanced high-frequency signals + noise = high-frequency content → Laplacian acts like an ‘amplifier of noise’.**
 
 ### Laplacian of Gaussian (LoG)
 
 - Standard pipeline:
-  1. Gaussian smoothing (denoising)
-  2. Laplacian (second derivative) → detect structural changes, enhance edges
-  3. zero-crossing (edge detection)
+    1. Gaussian smoothing (denoising)
+    2. Laplacian (second derivative) → detect structural changes, enhance edges
+    3. zero-crossing (edge detection)
 - First smooth, then detect changes
 - Scale control
-  - small $\sigma$  → fine detail edges
-  - large $\sigma$  → only large structures are preserved
+    - small $\sigma$  → fine detail edges
+    - large $\sigma$  → only large structures are preserved
 - Characteristics:
-  - more stable than Laplacian
-  - a classical theoretical mode
+    - more stable than Laplacian
+    - a classical theoretical mode
 
 ## Approximation Methods
 
@@ -243,8 +243,7 @@ In computer vision, edges are commonly computed using convolution-based differen
 - Gaussian acts as a blur operator:
     - small $\sigma$ → slight blurring
     - large $\sigma$ → strong blurring
-    - Subtracting a strongly blurred image from a slightly blurred image results in nearly zero difference in flat regions, while producing large differences and strong responses around edges, thereby enabling the extraction of edge information.
-
+- Subtracting a strongly blurred image from a slightly blurred image results in nearly zero difference in flat regions, while producing large differences and strong responses around edges, thereby enabling the extraction of edge information.
 - Characteristics:
     - Computationally efficient
     - Multi-scale representation
@@ -283,8 +282,8 @@ In computer vision, edges are commonly computed using convolution-based differen
 - **Low threshold**: detected pixels are classified as **weak edges**, which may correspond to either edges or noise.
 
 - The final result is determined based on connectivity:
-  - Only weak edges connected to strong edges are preserved.
-  - Weak edges that are not connected to strong edges are suppressed (removed).
+    - Only weak edges connected to strong edges are preserved.
+    - Weak edges that are not connected to strong edges are suppressed (removed).
 
 👉 The essence is to exploit the **spatial continuity (connectivity) of edges**, preserving true edges while suppressing noise.
 
@@ -308,25 +307,25 @@ In computer vision, edges are commonly computed using convolution-based differen
 - Dilate − Erode ⇒ the difference between expansion and contraction highlights the boundary regions.
 
 - Characteristics:
-  - simple
-  - suitable for binary / industrial images
-  - does not rely on gradients
+    - simple
+    - suitable for binary / industrial images
+    - does not rely on gradients
 
 ### Phase Congruency
 **Core Idea:**
 > <span style="color:#d62728; font-weight:bold;">Edge = locations where phases are congruent across multiple scales in the Fourier domain.</span>
 
 - An image can be decomposed into:
-  - different frequencies
-  - different phases
+    - different frequencies
+    - different phases
 
 - Determine whether the signal structures are aligned.
-  - Edge points → all frequency components (low-frequency + high-frequency) are aligned at the same location → energy is concentrated.
-  - Non-edge points → frequency components are not synchronized and phases are disordered → unstable and dispersed.
+    - Edge points → all frequency components (low-frequency + high-frequency) are aligned at the same location → energy is concentrated.
+    - Non-edge points → frequency components are not synchronized and phases are disordered → unstable and dispersed.
 
 - Characteristics:
-  - independent of image brightness
-  - highly robust to illumination changes
-  - close to human perception
+    - independent of image brightness
+    - highly robust to illumination changes
+    - close to human perception
 
 ![Edge_Detection](/docs/images/edge_detection_demo.png)
