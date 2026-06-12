@@ -6,3 +6,4 @@
 
 - [滤波器](filter.md)
 - [边缘检测](edge_detection.md)
+- [拟合](fitting.md)

@@ -27,5 +27,6 @@ nav:
     - Overview: vision/index.md
     - Filter: vision/filter.md
     - Edge Detection: vision/edge_detection.md
+    - Fitting: vision/fitting.md
   - .NET Development:
     - Overview: dotnet/index.md
